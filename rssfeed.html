@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<!-- Jerry Pennell -->
+<!-- Advanced Scalable Data Infrastructures -->
+<!-- week 2 -->
+<!-- Term 1208 -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>RSS Reader with jQuery Mobile XML</title>
+
+    <link rel="stylesheet" href="style/jquery.mobile-1.1.1.css" />
+    <link rel="stylesheet" href="style/rss.css"/>
+
+    <script src="js/vendor/jquery-1.8.0.min.js"></script>
+    <script src="js/vendor/jquery.mobile-1.1.1.js"></script>
+    <script src="js/vendor/rssfeed.js"></script>
+
+
+
+</head>
+	<body>
+
+	<script type='text/javascript'>//<![CDATA[
+
+
+	var maxLength = 20;
+	/* writing HTML */
+	document.write(
+	  '<div data-role="page" id="list" data-theme="b">' +
+	  '  <div data-role="header" data-position="fixed">' +
+	  '  <a href="index.html" data-role="button" data-icon="home" data-theme="b" rel="external"  class="ui-btn-right">Home</a>'+
+	  '    <h1><span id="widgetTitle">...</span> ' +
+	  '      <span style="font-size: x-small">(HTML)</span></h1>' +
+	  '  </div>' +
+	  '  <div data-role="content">' +
+	  '    <ul data-role="listview" data-filter="true" id="articleList">'
+	);
+	for(var i=1; i<=maxLength; i++){
+	  document.write(
+		'<li id="list' + i + '"><a href="#article' + i + '" id="link' + i + '">&nbsp;</a></li>'
+	  );
+	}
+	document.write(
+	  '    </ul>' +
+	  '  </div>' +
+	  '</div>'
+	);
+	for(i=1; i<=maxLength; i++){
+	  document.write(
+		'<div data-role="page" id="article' + i + '">' +
+		'  <div data-role="header" data-position="inline">' +
+		'    <a href="#list" data-role="button" data-icon="home" data-back="true">Home</a>' +
+		'    <h1 id="articleHeader' + i + '">&nbsp;</h1>' +
+		'    <a href="#" id="openButton' + i + '" data-role="button" data-icon="plus"' +
+		'      class="ui-btn-right" rel="external">Open</a>' +
+		'  </div>' +
+		'  <div data-role="content">' +
+		'    <div id="articleContent' + i + '" class="articleContent"></div>' +
+		'    <div data-role="controlgroup" data-type="horizontal">' +
+		'      <a href="#article' + String(i-1) + '" data-role="button" data-icon="arrow-l"' +
+		'        data-inline="true" class="prevButton">Prev</a>' +
+		'      <a href="#article' + String(i+1) + '" data-role="button" data-icon="arrow-r"' +
+		'        data-inline="true" class="nextButton" data-iconpos="right">Next</a>' +
+		'    </div>' +
+		'  </div>' +
+		'</div>'
+	  );
+	}
+
+
+	//]]>
+
+	</script>
+	</body>
+</html>
+

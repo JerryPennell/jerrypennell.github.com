@@ -1,69 +1,121 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!-- Jerry Pennell -->
+<!-- Advanced Scalable Data Infrastructures -->
+<!-- week 2 -->
+<!-- Term 1208 -->
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Jerrypennell.github.com : git hub web site" />
+    <title>comic</title>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" href="style/jquery.mobile-1.1.1.css" />
+    <link rel="stylesheet" href="style/comic.css"/>
 
-    <title>Jerrypennell.github.com</title>
+
+    <script src="js/vendor/jquery-1.8.0.min.js"></script>
+    <script src="js/vendor/jquery.mobile-1.1.1.js"></script>
+    <script src="js/vendor/underscore.js"></script>
+    <script src="js/vendor/backbone.js"></script>
+    <script src="js/vendor/formparams.js"></script>
+
+    <!-- App specific scripts -->
+    <script src="js/main.js"></script>
+
+    <!-- templates -->
+    <script type="text/template" id="comic-list-item-template">
+      <li><a href="#comic-details" identifier="<%= id %>"><%= displayDate %> - <%= publisher %></a></li>
+    </script>
+
+    <script type="text/template" id="comic-details-template">
+        <h3><%= publisher %></h3>
+        <ul data-role="listview" id="comic-fields" data-inset="true">
+          <li>Date: <%= displayDate %></li>
+          <li>Publisher: <%= publisher %></li>
+          <li>Comic Name: <%= title %></li>
+          <li>Issue: <%= issue%></li>
+          <li>Comments: <%= comments %></li>
+        </ul>
+    </script>
+
+    <script type="text/template" id="comic-form-template">
+        <label for="date" class="select">Date</label>
+        <% if (navigator.userAgent.indexOf('iPhone') >= 0 || navigator.userAgent.indexOf('iPad') >= 0) { %>
+            <input type="date" name="date" id="date" placeholder="Date" value="<%= dateInputType %>" />
+        <% }else{ %>
+            <input type="date" name="date" id="date" placeholder="Date" value="<%= displayDate %>" />
+        <% } %>
+
+        <label for="publisher" class="select">Publisher</label>
+        <select name="publisher" id="publisher">
+            <option>DC</option>
+            <option>Marvel</option>
+            <option>Image</option>
+            <option>Dark Horse</option>
+        </select>
+
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" placeholder="" value="<%= title %>" />
+
+        <label for="issue">Issue</label>
+        <input type="number" name="issue" id="issue" placeholder="" value="<%= issue %>" />
+
+        <div data-role="fieldcontain">
+            <textarea name="comments" id="comments" placeholder="Comments"><%= comments %></textarea>
+        </div>
+    </script>
+
+    <!-- template for showing demo of pulling remote data -->
+    <script type="text/template" id="comic-data-template">
+         <a href="twitter.html" rel="external" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b">Twitter - (JSONP)</a>
+         <a href="flicker.html" rel="external" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b">Flicker - (JSON)</a>
+         <a href="rssfeed.html" rel="external" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b">RSS Feed - (XML)</a>
+    </script>
+
+    <!-- maximum scale added to stop zoom on select controls -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
   </head>
-
   <body>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/JerryPennell">View on GitHub</a>
-
-          <h1 id="project_title">Jerrypennell.github.com</h1>
-          <h2 id="project_tagline">git hub web site</h2>
-
-        </header>
+    <div data-role="page" id="comics">
+      <div data-role="header">
+        <h1>Comics</h1>
+        <a href="#comic-data" data-role="button" data-icon="gear" id="gear-button" class="ui-btn-left">Data demo</a>
+        <a href="#comic-form" data-role="button" data-icon="add" id="add-button" class="ui-btn-right">Add</a>
+      </div>
+      <div data-role="content">
+          <!-- the contents of the list view will be rendered via the backbone view -->
+      </div>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
+    <div data-role="page" id="comic-details" data-add-back-btn="true">
+      <div data-role="header">
+        <a href="#comic-form" data-role="button" data-icon="arrow-d" id="edit-comic-button" class="ui-btn-right">Edit</a>
+        <h1>Comic Details</h1>
+      </div>
+      <div data-role="content" id="comic-details-content">
+          <!-- the contents of the list view will be rendered via the backbone view -->
+      </div>
     </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
+    <div data-role="page" id="comic-form" data-add-back-btn="true">
+      <div data-role="header">
+        <a href="#" data-role="button" data-icon="check" data-theme="b" data-rel="back" id="save-comic-button" class="ui-btn-right">Save</a>
+        <h1>New Comic</h1>
+      </div>
+      <div data-role="content" id="comic-form-content">
+          <!-- the contents of the form will be rendered via the backbone view -->
+          <form id="comic-form-form" action="#"></form>
+      </div>
     </div>
 
-    
-
+     <div data-role="page" id="comic-data" data-add-back-btn="true">
+      <div data-role="header">
+        <h1>Data Loading Demo</h1>
+        <a href="#comic-data" data-role="button" data-icon="home" id="go-back-home" class="ui-btn-right">Home</a>
+      </div>
+      <div data-role="content" id="comic-data-content">
+         <!-- the contents of the list view will be rendered via the backbone view -->
+         <form id="comic-data-form" action="#"></form>
+      </div>
+    </div>
   </body>
 </html>
