@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>Read in static data from CSV</title>
+
+
+	<link rel="stylesheet" href="style/jquery.mobile-1.1.1.css" />
+
+    <link rel="stylesheet" href="css/csvtable.css" type="text/css" />
+
+    <script src="js/vendor/jquery-1.8.0.min.js"></script>
+    <script src="js/vendor/jquery.mobile-1.1.1.js"></script>
+
+	<script type="text/javascript" src="js/vendor/jquery.csvToTable.js"></script>
+	<script type="text/javascript" src="js/vendor/jquery.tablesorter.dev.js"></script>
+
+   <script>
+		$(function() {
+			$.get('data/comics.csv', function(data) {
+				$('#CSVSource').html('<pre>' + data + '</pre>');
+			});
+			$('#CSVTable').CSVToTable('data/comics.csv', { loadingImage: 'images/loading.gif', startLine: 0 });
+
+			$('#CSVTable2').CSVToTable('data/comics.csv', { loadingImage: 'images/loading.gif', startLine: 1, headers: ['Date', 'Publisher', 'Title', 'Comments', 'Issue' ] }).bind("loadComplete",function() {
+				$('#CSVTable2').find('TABLE').tablesorter();
+			});;
+		});
+	</script>
+
+</head>
+<body>
+    <div data-role="page" id="comics">
+      <div data-role="header">
+        <h1>CSV Static data</h1>
+           <a href="index.html" data-role="button" data-icon="home" data-theme="b" rel="external"  class="ui-btn-right">Home</a>
+      </div>
+      <div data-role="content" >
+      <br><br>
+	  CSV DATA (comma separated values) source of <a href="data/comics.csv">comic.csv</a>:<br>
+	  <div id="CSVSource" class="source">
+	  </div>
+
+	  <br><br>
+	  CSV To Table:<br>
+	  <div id="CSVTable">
+
+</div>
+
+      </div>
+    </div>
+
+</body>
+</html>

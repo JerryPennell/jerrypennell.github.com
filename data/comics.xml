@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<comics>
+  <comic>
+		<date>8-29-2012</date>
+		<publisher>Marvel</publisher>
+		<title>Wolverine</title>
+		<comments>A very exciting comic</comments>
+		<issue>36</issue>
+  </comic>
+  <comic>
+		<date>8-13-2012</date>
+		<publisher>Image</publisher>
+		<title>Gen13</title>
+		<comments>Fairchild is a great character</comments>
+		<issue>10</issue>
+  </comic> 
+  <comic>
+		<date>7-3-2011</date>
+		<publisher>DC</publisher>
+		<title>Batman - Dark Night</title>
+		<comments>Bain is a mean guy</comments>
+		<issue>41</issue>
+  </comic> 
+    <comic>
+  		<date>4-11-2011</date>
+  		<publisher>Dark Horse</publisher>
+  		<title>Hell Rider</title>
+  		<comments>Bain is a mean guy</comments>
+  		<issue>65</issue>
+  </comic> 
+</comics>
