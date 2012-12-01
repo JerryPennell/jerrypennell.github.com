@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>How to retrieve Twitter tweets with jQuery | Queness</title>
+	
+	
+	<link rel="stylesheet" href="style/jquery.mobile-1.1.1.css" />
+
+    <script src="js/vendor/jquery-1.8.0.min.js"></script>
+    <script src="js/vendor/jquery.mobile-1.1.1.js"></script>
+
+	<script src="js/vendor/twitter.js"></script>
+	<style type="text/css">
+
+		#jstwitter {
+			width: 300px;
+			font-family: georgia;
+			font-size: 15px;
+			color: #333333;
+			padding: 10px;
+		}
+
+		#jstwitter .tweet {
+			margin: 0 auto 15px auto;
+			padding: 0 0 15px 0;
+			border-bottom: 1px dotted #ccc;
+		}
+
+		#jstwitter .tweet a {
+			text-decoration: none;
+			color: #0000ca;
+		}
+
+		#jstwitter .tweet a:hover {
+			text-decoration: underline;
+		}
+
+		#jstwitter .tweet .time {
+			font-size: 10px;
+			font-style: italic;
+			color: #666666;
+		}
+
+
+	</style>
+</head>
+<body>
+    <div data-role="page" id="comics">
+      <div data-role="header">
+        <h1>JSONP Twitter Feed</h1>
+           <a href="index.html" data-role="button" data-icon="home" data-theme="b" rel="external"  class="ui-btn-right">Home</a>
+      </div>
+      <div data-role="content" id="jstwitter">
+         <!-- twitter feed is put here -->
+      </div>
+    </div>
+    
+</body>
+</html>
