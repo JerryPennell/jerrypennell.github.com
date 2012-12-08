@@ -9,7 +9,7 @@ body{margin:0}
 a:focus{outline:thin dotted}
 a:active,a:hover{
 	outline: 0;
-	color: #F90;
+	color: #6C0;
 }
 h1{font-size:2em;margin:.67em 0}
 h2{font-size:1.5em;margin:.83em 0}

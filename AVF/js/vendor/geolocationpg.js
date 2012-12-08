@@ -4,7 +4,7 @@
       geocoder = new google.maps.Geocoder();
                       
       $('#button-get-reverse-lookup').click(function(){
-        navigator.geolocation.getCurrentPosition(onGetCurrentPositionSuccess, onGetCurrentPositionError);
+        navigator.geolocation.getCurrentPosition(onGetCurrentPositionSuccess, onGetCurrentPositionError,{enableHighAccuracy:true});
       });
     });
                     
