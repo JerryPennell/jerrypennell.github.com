@@ -1,0 +1,22 @@
+#yourimage {
+		width:100%;	
+	}
+	
+	#swatches {
+		width: 100%;
+		height: 50px;	
+	}
+
+	.swatch {
+		width:18%;
+		height: 50px;
+		border-style:solid;
+		border-width:thin;	
+		float: left;
+		margin-right: 3px;	
+	}
+	
+	input[type=button] {
+		width: 100%;
+		padding: 10px;	
+	}
