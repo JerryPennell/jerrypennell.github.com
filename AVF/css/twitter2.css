@@ -1,0 +1,25 @@
+div.polytweet_exact {
+	width: 25px;
+	height: 32px;
+	background-image: url(http://twitter.com/images/pin.png);
+}
+
+img.polytweet_approx {
+	/* IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+
+	/* IE 5-7 */
+	filter: alpha(opacity=50);
+
+	/* Netscape */
+	-moz-opacity: 0.5;
+
+	/* Safari 1.x */
+	-khtml-opacity: 0.5;
+
+	/* Good browsers */
+	opacity: 0.5;
+}
+
+img.polytweet_over {
+}
