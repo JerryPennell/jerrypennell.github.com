@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Acceleration Example</title>
+	    
+	<!-- jQuery Mobile Setup -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/jquery.mobile-1.1.1.css" />
+	<script type="text/javascript" charset="utf-8" src="js/vendor/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/vendor/jquery.mobile-1.1.1.js"></script>
+	<!-- PhoneGap Setup -->
+    <script type="text/javascript" charset="utf-8" src="js/vendor/cordova-2.2.0.js"></script>
+    
+    <link rel="stylesheet" href="css/compass.css" />
+    <script type="text/javascript" charset="utf-8" src="js/script.js"></script>
+  </head>
+  <body>
+	<div data-role="page" id="object"> 
+		<div data-role="header" data-position="fixed">
+			<h1>Compass Example</h1>
+             <a href="index.html" data-role="button" data-icon="home" data-theme="b" rel="external" class="ui-btn-right">Home</a>
+		</div> 
+		<div data-role="content">
+			<div id="obj_wall">
+				<div id="obj"></div>
+			</div>
+			<div>
+				<a href="#" id="startMove" data-role="button">Start Moving</a>
+			</div>
+		</div> 
+		<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="compasspg.html">Acceleration</a></li>
+					<li><a class="ui-btn-active ui-state-persist">Compass</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div> 
+	</div>
+  </body>
+</html>
